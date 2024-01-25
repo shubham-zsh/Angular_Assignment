@@ -1,0 +1,79 @@
+
+<div style="display: flex; justify-content: center; padding: 10px;">
+  <div>
+    <h1 style="display: flex; justify-content: center; color: palevioletred;">Contact Our</h1>
+    <h3 style="font-weight: 400;">Customer Support Center</h3>
+  </div>
+  <div style="padding-left: 40px;">
+    <img src="assets/laptop.png" alt="laptop" width="170">
+  </div>
+</div>
+
+<br>
+<br>
+
+<div style="text-align: center;">
+  <h3 style="font-weight: 400;">Contact information</h3>
+  <p>Please fill out your contact information below</p>
+</div>
+
+<div class="container-fluid" style="padding: 100px;">
+  <h2>Marvellous Login Form</h2>
+  <!-- Add FormGroup with our model -->
+  <form [formGroup]="ShubhamForm">
+    <div class = "form-group" >
+      <label> Name </label>
+      <div style ="display: flex; justify-content:flex-start; ">
+        <div class="form-group">
+          <input [class.is-invalid] = "ShubhamForm.get('firstname')?.invalid && ShubhamForm.get('firstname')?.touched" type="text" class="form-control" formControlName="firstname">
+          <small [class.d-none]="ShubhamForm.get('firstname')?.valid" class="text-danger">Firstname is required</small>
+        </div>
+        <div  class="form-group">
+          <input [class.is-invalid] = "ShubhamForm.get('lastname')?.invalid && ShubhamForm.get('lastname')?.touched" type="text" class="form-control" formControlName="lastname">
+          <small [class.d-none]="ShubhamForm.get('lastname')?.valid" class="text-danger">Lastname is required</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" class="form-control" formControlName = "Email" >
+    </div>
+
+    <div class="form-group">
+      <label>Phone</label>
+      <input type="tel" class="form-control" formControlName="Phone">
+    </div>
+
+    <div class="form-group" formGroupName = "Address">
+      <h6> Address </h6>
+      <div class="form-group">
+        <label>City</label>
+        <input type="text" class="form-control" formControlName="City">
+      </div>
+      <div class="form-group">
+        <label>State</label>
+        <select class="form-control" formControlName="State">
+          <option value="Maharashtra">Maharashtra</option>
+          <option value="Gujarat">Gujarat</option>
+          <option value="Uttar Pradesh">Uttar Pradesh</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>ZIP_code</label>
+        <input type="text" class="form-control" formControlName="ZIP_code">
+      </div>
+    </div>
+    <div class="form-group">
+      <label >Comments</label>
+      <input type="text" class="form-control" formControlName = "Comments">
+    </div>
+    <br>
+
+    <button type="submit" class="btn btn-primary">SUBMIT FORM</button>
+  </form>
+
+  {{ ShubhamForm.value | json }}
+</div>
+
+<router-outlet></router-outlet>
